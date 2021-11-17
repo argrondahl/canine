@@ -7,7 +7,7 @@ as log file and perforamance plot.
 In addition, we can peek the result of 42 first images from prediction set.
 """
 
-import customize_obj
+# import customize_obj
 import tensorflow as tf
 from deoxys.experiment import Experiment, ExperimentPipeline
 import argparse
@@ -27,7 +27,7 @@ if __name__ == '__main__':
     parser.add_argument("--epochs", default=500, type=int)
     parser.add_argument("--model_checkpoint_period", default=5, type=int)
     parser.add_argument("--prediction_checkpoint_period", default=5, type=int)
-    parser.add_argument("--meta", default='patient_idx,slice_idx', type=str)
+    parser.add_argument("--meta", default='patient_idx', type=str)
     parser.add_argument("--monitor", default='', type=str)
     parser.add_argument("--memory_limit", default=0, type=int)
 
