@@ -1,0 +1,29 @@
+set NUM_CPUS=4
+set RAY_ROOT=../../ray
+set CUDA_VISIBLE_DEVICES=0
+python experiment.py config/config_file.json log_folder --epoch 100
+
+run_experiment.bat config/v_net_baseline_aug_c90_w400_f0_f1_f2.json v_net_baseline_aug_c90_w400_f0_f1_f2 100
+run_experiment.bat config/v_net_baseline_aug_c90_w400_f0_f2_f1.json v_net_baseline_aug_c90_w400_f0_f2_f1 100
+run_experiment.bat config/v_net_baseline_aug_c90_w400_f1_f0_f2.json v_net_baseline_aug_c90_w400_f1_f0_f2 100
+run_experiment.bat config/v_net_baseline_aug_c90_w400_f1_f2_f0.json v_net_baseline_aug_c90_w400_f1_f2_f0 100
+run_experiment.bat config/v_net_baseline_aug_c90_w400_f2_f0_f1.json v_net_baseline_aug_c90_w400_f2_f0_f1 100
+run_experiment.bat config/v_net_baseline_aug_c90_w400_f2_f1_f0.json v_net_baseline_aug_c90_w400_f2_f1_f0 100
+run_experiment.bat config/v_net_baseline_aug_perc_w_f0_f1_f2.json v_net_baseline_aug_perc_w_f0_f1_f2 100    
+run_experiment.bat config/v_net_baseline_aug_perc_w_f0_f2_f1.json v_net_baseline_aug_perc_w_f0_f2_f1 100    
+run_experiment.bat config/v_net_baseline_aug_perc_w_f1_f0_f2.json v_net_baseline_aug_perc_w_f1_f0_f2 100    
+run_experiment.bat config/v_net_baseline_aug_perc_w_f1_f2_f0.json v_net_baseline_aug_perc_w_f1_f2_f0 100    
+run_experiment.bat config/v_net_baseline_aug_perc_w_f2_f0_f1.json v_net_baseline_aug_perc_w_f2_f0_f1 100    
+run_experiment.bat config/v_net_baseline_aug_perc_w_f2_f1_f0.json v_net_baseline_aug_perc_w_f2_f1_f0 100    
+run_experiment.bat config/v_net_baseline_c90_w400_f0_f1_f2.json v_net_baseline_c90_w400_f0_f1_f2 100        
+run_experiment.bat config/v_net_baseline_c90_w400_f0_f2_f1.json v_net_baseline_c90_w400_f0_f2_f1 100        
+run_experiment.bat config/v_net_baseline_c90_w400_f1_f0_f2.json v_net_baseline_c90_w400_f1_f0_f2 100        
+run_experiment.bat config/v_net_baseline_c90_w400_f1_f2_f0.json v_net_baseline_c90_w400_f1_f2_f0 100        
+run_experiment.bat config/v_net_baseline_c90_w400_f2_f0_f1.json v_net_baseline_c90_w400_f2_f0_f1 100        
+run_experiment.bat config/v_net_baseline_c90_w400_f2_f1_f0.json v_net_baseline_c90_w400_f2_f1_f0 100        
+run_experiment.bat config/v_net_baseline_perc_w_f0_f1_f2.json v_net_baseline_perc_w_f0_f1_f2 100
+run_experiment.bat config/v_net_baseline_perc_w_f0_f2_f1.json v_net_baseline_perc_w_f0_f2_f1 100
+run_experiment.bat config/v_net_baseline_perc_w_f1_f0_f2.json v_net_baseline_perc_w_f1_f0_f2 100
+run_experiment.bat config/v_net_baseline_perc_w_f1_f2_f0.json v_net_baseline_perc_w_f1_f2_f0 100
+run_experiment.bat config/v_net_baseline_perc_w_f2_f0_f1.json v_net_baseline_perc_w_f2_f0_f1 100
+run_experiment.bat config/v_net_baseline_perc_w_f2_f1_f0.json v_net_baseline_perc_w_f2_f1_f0 100

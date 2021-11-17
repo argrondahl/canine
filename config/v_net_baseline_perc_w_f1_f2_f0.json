@@ -1,0 +1,333 @@
+{
+    "train_params": {
+        "epochs": 200,
+        "callbacks": [
+            {
+                "class_name": "EarlyStopping",
+                "config": {
+                    "monitor": "val_loss",
+                    "patience": 30
+                }
+            }
+        ]
+    },
+    "dataset_params": {
+        "class_name": "H5PatchReader",
+        "config": {
+            "filename": "../canine_ds_3d.h5",
+            "batch_size": 2,
+            "patch_size": 112,
+            "batch_cache": 6,
+            "x_name": "input",
+            "y_name": "target",
+            "train_folds": [
+                1
+            ],
+            "val_folds": [
+                2
+            ],
+            "test_folds": [
+                0
+            ],
+            "shuffle": true,
+            "overlap": 0.5,
+            "drop_fraction": 0.0007,
+            "check_drop_channel": 0,
+            "preprocessors": [
+                {
+                    "class_name": "ImageNormalizerPreprocessor",
+                    "config": {
+                        "vmin": [
+                            -954
+                        ],
+                        "vmax": [
+                            1673
+                        ]
+                    }
+                }
+            ],
+            "bounding_box": true
+        }
+    },
+    "input_params": {
+        "shape": [
+            112,
+            112,
+            112,
+            1
+        ]
+    },
+    "model_params": {
+        "loss": {
+            "class_name": "BinaryFbetaLoss"
+        },
+        "optimizer": {
+            "class_name": "adam",
+            "config": {
+                "learning_rate": 0.0001
+            }
+        },
+        "metrics": [
+            {
+                "class_name": "BinaryFbeta"
+            },
+            {
+                "class_name": "Dice"
+            }
+        ]
+    },
+    "architecture": {
+        "type": "Vnet",
+        "layers": [
+            {
+                "class_name": "Conv3D",
+                "config": {
+                    "filters": 32,
+                    "kernel_size": 3,
+                    "activation": "relu",
+                    "kernel_initializer": "he_normal",
+                    "padding": "same"
+                },
+                "normalizer": {
+                    "class_name": "BatchNormalization"
+                }
+            },
+            {
+                "class_name": "Conv3D",
+                "config": {
+                    "filters": 32,
+                    "kernel_size": 3,
+                    "activation": "relu",
+                    "kernel_initializer": "he_normal",
+                    "padding": "same"
+                },
+                "normalizer": {
+                    "class_name": "BatchNormalization"
+                },
+                "name": "conv1"
+            },
+            {
+                "class_name": "MaxPooling3D"
+            },
+            {
+                "class_name": "Conv3D",
+                "config": {
+                    "filters": 64,
+                    "kernel_size": 3,
+                    "activation": "relu",
+                    "kernel_initializer": "he_normal",
+                    "padding": "same"
+                },
+                "normalizer": {
+                    "class_name": "BatchNormalization"
+                }
+            },
+            {
+                "class_name": "Conv3D",
+                "config": {
+                    "filters": 64,
+                    "kernel_size": 3,
+                    "activation": "relu",
+                    "kernel_initializer": "he_normal",
+                    "padding": "same"
+                },
+                "normalizer": {
+                    "class_name": "BatchNormalization"
+                },
+                "name": "conv2"
+            },
+            {
+                "class_name": "MaxPooling3D"
+            },
+            {
+                "class_name": "Conv3D",
+                "config": {
+                    "filters": 128,
+                    "kernel_size": 3,
+                    "activation": "relu",
+                    "kernel_initializer": "he_normal",
+                    "padding": "same"
+                },
+                "normalizer": {
+                    "class_name": "BatchNormalization"
+                }
+            },
+            {
+                "class_name": "Conv3D",
+                "config": {
+                    "filters": 128,
+                    "kernel_size": 3,
+                    "activation": "relu",
+                    "kernel_initializer": "he_normal",
+                    "padding": "same"
+                },
+                "normalizer": {
+                    "class_name": "BatchNormalization"
+                },
+                "name": "conv3"
+            },
+            {
+                "class_name": "MaxPooling3D"
+            },
+            {
+                "class_name": "Conv3D",
+                "config": {
+                    "filters": 256,
+                    "kernel_size": 3,
+                    "activation": "relu",
+                    "kernel_initializer": "he_normal",
+                    "padding": "same"
+                },
+                "normalizer": {
+                    "class_name": "BatchNormalization"
+                }
+            },
+            {
+                "class_name": "Conv3D",
+                "config": {
+                    "filters": 256,
+                    "kernel_size": 3,
+                    "activation": "relu",
+                    "kernel_initializer": "he_normal",
+                    "padding": "same"
+                },
+                "normalizer": {
+                    "class_name": "BatchNormalization"
+                }
+            },
+            {
+                "name": "upconv3",
+                "class_name": "Conv3DTranspose",
+                "config": {
+                    "filters": 128,
+                    "kernel_size": 3,
+                    "strides": 2,
+                    "kernel_initializer": "he_normal",
+                    "padding": "same"
+                }
+            },
+            {
+                "class_name": "Conv3D",
+                "config": {
+                    "filters": 128,
+                    "kernel_size": 3,
+                    "activation": "relu",
+                    "kernel_initializer": "he_normal",
+                    "padding": "same"
+                },
+                "normalizer": {
+                    "class_name": "BatchNormalization"
+                },
+                "inputs": [
+                    "conv3",
+                    "upconv3"
+                ]
+            },
+            {
+                "class_name": "Conv3D",
+                "config": {
+                    "filters": 128,
+                    "kernel_size": 3,
+                    "activation": "relu",
+                    "kernel_initializer": "he_normal",
+                    "padding": "same"
+                },
+                "normalizer": {
+                    "class_name": "BatchNormalization"
+                }
+            },
+            {
+                "name": "upconv2",
+                "class_name": "Conv3DTranspose",
+                "config": {
+                    "filters": 64,
+                    "kernel_size": 3,
+                    "strides": 2,
+                    "kernel_initializer": "he_normal",
+                    "padding": "same"
+                }
+            },
+            {
+                "class_name": "Conv3D",
+                "config": {
+                    "filters": 64,
+                    "kernel_size": 3,
+                    "activation": "relu",
+                    "kernel_initializer": "he_normal",
+                    "padding": "same"
+                },
+                "normalizer": {
+                    "class_name": "BatchNormalization"
+                },
+                "inputs": [
+                    "conv2",
+                    "upconv2"
+                ]
+            },
+            {
+                "class_name": "Conv3D",
+                "config": {
+                    "filters": 64,
+                    "kernel_size": 3,
+                    "activation": "relu",
+                    "kernel_initializer": "he_normal",
+                    "padding": "same"
+                },
+                "normalizer": {
+                    "class_name": "BatchNormalization"
+                }
+            },
+            {
+                "name": "upconv1",
+                "class_name": "Conv3DTranspose",
+                "config": {
+                    "filters": 32,
+                    "kernel_size": 3,
+                    "strides": 2,
+                    "kernel_initializer": "he_normal",
+                    "padding": "same"
+                }
+            },
+            {
+                "class_name": "Conv3D",
+                "config": {
+                    "filters": 32,
+                    "kernel_size": 3,
+                    "activation": "relu",
+                    "kernel_initializer": "he_normal",
+                    "padding": "same"
+                },
+                "normalizer": {
+                    "class_name": "BatchNormalization"
+                },
+                "inputs": [
+                    "conv1",
+                    "upconv1"
+                ]
+            },
+            {
+                "class_name": "Conv3D",
+                "config": {
+                    "filters": 32,
+                    "kernel_size": 3,
+                    "activation": "relu",
+                    "kernel_initializer": "he_normal",
+                    "padding": "same"
+                },
+                "normalizer": {
+                    "class_name": "BatchNormalization"
+                }
+            },
+            {
+                "class_name": "Conv3D",
+                "config": {
+                    "filters": 1,
+                    "kernel_size": 3,
+                    "activation": "sigmoid",
+                    "kernel_initializer": "he_normal",
+                    "padding": "same"
+                }
+            }
+        ]
+    }
+}
