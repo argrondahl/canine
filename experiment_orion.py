@@ -7,7 +7,7 @@ as log file and perforamance plot.
 In addition, we can peek the result of 42 first images from prediction set.
 """
 
-# import customize_obj
+import customize_obj
 import tensorflow as tf
 from deoxys.experiment import Experiment, ExperimentPipeline
 import argparse
