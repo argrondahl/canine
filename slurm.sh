@@ -53,7 +53,7 @@ nvidia-modprobe -u -c=0
 export ITER_PER_EPOCH=100
 export NUM_CPUS=4
 export RAY_ROOT=$TMPDIR/ray
-singularity exec --nv deoxys-new.sif python experiment_orion.py $1 $HOME/hnperf/$2 --temp_folder $SCRATCH/hnperf/$2 --analysis_folder $SCRATCH/analysis/$2 --epochs $3 ${@:4}
+singularity exec --nv deoxys-new.sif python experiment_orion.py $1 $SCRATCH/canine/$2 --temp_folder $SCRATCH/hnperf/$2 --analysis_folder $SCRATCH/analysis/$2 --epochs $3 ${@:4}
 
 # echo "Finished training. Post-processing results"
 
