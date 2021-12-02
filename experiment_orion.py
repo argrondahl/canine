@@ -10,6 +10,7 @@ In addition, we can peek the result of 42 first images from prediction set.
 import customize_obj
 import tensorflow as tf
 from deoxys.experiment import Experiment, ExperimentPipeline
+from deoxys.model.callbacks import PredictionCheckpoint
 import argparse
 
 
@@ -64,6 +65,7 @@ if __name__ == '__main__':
         print('Intermediate processed files for merging patches are saved to',
               analysis_folder)
 
+    PredictionCheckpoint._max_size = 0.5
     exp = ExperimentPipeline(
         log_base_path=args.log_folder,
         temp_base_path=args.temp_folder
