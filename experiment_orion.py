@@ -81,10 +81,10 @@ if __name__ == '__main__':
         analysis_base_path=analysis_folder,
         map_meta_data=meta,
     ).plot_performance().plot_prediction(
-        masked_images=[], best_num=2, worst_num=2
+        masked_images=[], best_num=0, worst_num=0
     ).load_best_model(monitor=args.monitor)
     if analysis_folder:
-        exp.plot_prediction(best_num=2, worst_num=2)
+        exp.plot_prediction(best_num=0, worst_num=0)
     
     # run test based on best model
     exp.run_test().apply_post_processors(
@@ -92,4 +92,4 @@ if __name__ == '__main__':
         analysis_base_path=analysis_folder,
         map_meta_data=meta,
         run_test=True
-    ).plot_3d_test_images(best_num=2, worst_num=0)
+    ).plot_3d_test_images(best_num=0, worst_num=0)
