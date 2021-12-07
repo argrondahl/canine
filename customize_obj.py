@@ -102,7 +102,7 @@ class H5PatchGeneratorModified(H5PatchGenerator):
         super().description
 
         if self.actual_input_shape:
-            self._description[0]['shape'] = self.actual_input_shape
+            self._description[0]['shape'] = tuple(self.actual_input_shape)
         
         return self._description
         
