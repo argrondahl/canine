@@ -38,12 +38,6 @@
             "check_drop_channel": 0,
             "preprocessors": [
                 {
-                    "class_name": "ChannelRepeater",
-                    "config": {
-                        "channel": 0
-                    }
-                },
-                {
                     "class_name": "HounsfieldWindowingPreprocessor",
                     "config": {
                         "window_center": 65,
