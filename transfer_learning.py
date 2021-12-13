@@ -92,7 +92,7 @@ if __name__ == '__main__':
 
     weights = ex.model._model.optimizer.get_weights()
     weights[0] = np.array(args.initial_epoch *
-                          os.environ.get('ITER_PER_EPOCH', 100))
+                          int(os.environ.get('ITER_PER_EPOCH', 100)))
     ex.model._model.optimizer.set_weights(weights)
 
     print('Optimizer state:', ex.model._model.optimizer.iterations)
