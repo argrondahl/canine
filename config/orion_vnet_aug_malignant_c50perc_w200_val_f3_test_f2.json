@@ -7,7 +7,7 @@
     "dataset_params": {
         "class_name": "H5PatchReader",
         "config": {
-            "filename": "/home/work/aurogr/hn_delin/canine_ds_3d_malignant_4fold.h5",
+            "filename": "/home/work/aurogr/hn_delin/canine_ds_3d_4fold.h5",
             "batch_size": 2,
             "patch_size": 112,
             "batch_cache": 6,
