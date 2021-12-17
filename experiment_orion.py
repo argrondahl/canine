@@ -65,7 +65,7 @@ if __name__ == '__main__':
         print('Intermediate processed files for merging patches are saved to',
               analysis_folder)
 
-    PredictionCheckpoint._max_size = 0.5
+    PredictionCheckpoint._max_size = 0.3
     exp = ExperimentPipeline(
         log_base_path=args.log_folder,
         temp_base_path=args.temp_folder
