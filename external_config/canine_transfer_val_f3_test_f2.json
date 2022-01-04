@@ -1,0 +1,14 @@
+{
+    "config": {
+        "filename": "/home/work/aurogr/hn_delin/canine_ds_3d_4fold.h5",
+        "train_folds": [
+            0,1
+        ],
+        "val_folds": [
+            3
+        ],
+        "test_folds": [
+            2
+        ]
+    }
+}
