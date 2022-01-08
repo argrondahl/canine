@@ -12,8 +12,9 @@
         ]
     },
     "dataset_params": {
-        "class_name": "H5PatchReader",
+        "class_name": "H5PatchReaderModified",
         "config": {
+            "actual_input_shape": [112, 112, 112, 2],
             "filename": "/home/work/aurogr/hn_delin/hnc_ous_maastro_ds_3d_6fold.h5",
             "batch_size": 2,
             "patch_size": 112,
