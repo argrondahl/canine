@@ -2,6 +2,7 @@ from deoxys.customize import custom_loss, custom_preprocessor, custom_datareader
 from deoxys.data.preprocessor import BasePreprocessor
 from deoxys.data.data_reader import H5PatchReader
 from deoxys.data.data_generator import H5PatchGenerator
+from elasticdeform import deform_random_grid
 import numpy as np
 
 
@@ -15,6 +16,16 @@ class ChannelRepeater(BasePreprocessor):
 
     def transform(self, images, targets):
         return np.concatenate([images, images[..., self.channel]], axis=-1), targets
+
+
+@custom_preprocessor
+class ElasticDeform(BasePreprocessor):
+    def __init__(self, sigma=4, points=3):
+        self.sigma = sigma
+        self.points = points
+    def transform(self, x, y):
+        return deform_random_grid([x, y], axis=[(1, 2, 3), (1, 2, 3)],
+                                  sigma=self.sigma, points=self.points)
 
 
 @custom_datareader
@@ -106,3 +117,4 @@ class H5PatchGeneratorModified(H5PatchGenerator):
         
         return self._description
         
+
