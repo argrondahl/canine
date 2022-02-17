@@ -9,6 +9,27 @@
         ],
         "test_folds": [
             1
+        ],
+        "preprocessors": [
+            {
+                "class_name": "WindowingPreprocessor",
+                "config": {
+                    "window_center": 96,
+                    "window_width": 200,
+                    "channel": 0
+                }
+            },
+            {
+                "class_name": "ImageNormalizerPreprocessor",
+                "config": {
+                    "vmin": [
+                        -100
+                    ],
+                    "vmax": [
+                        100
+                    ]
+                }
+            }
         ]
     }
 }
