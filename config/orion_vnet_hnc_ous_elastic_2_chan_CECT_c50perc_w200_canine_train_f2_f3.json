@@ -55,7 +55,7 @@
                 {
                     "class_name": "HounsfieldWindowingPreprocessor",
                     "config": {
-                        "window_center": 93,
+                        "window_center": 96,
                         "window_width": 200,
                         "channel": 1
                     }
