@@ -24,8 +24,11 @@ class ElasticDeform(BasePreprocessor):
         self.sigma = sigma
         self.points = points
     def transform(self, x, y):
-        return deform_random_grid([x, y], axis=[(1, 2, 3), (1, 2, 3)],
-                                  sigma=self.sigma, points=self.points)
+        if np.random.random() < 0.53:
+            return deform_random_grid([x, y], axis=[(1, 2, 3), (1, 2, 3)],
+                                    sigma=self.sigma, points=self.points)
+        else:
+            return x, y
 
 
 @custom_datareader
