@@ -5,12 +5,13 @@
         ]
     },
     "dataset_params": {
-        "class_name": "H5PatchReader",
+        "class_name": "H5PatchReaderModified",
         "config": {
+            "actual_input_shape": [112, 112, 112, 2],
             "filename": "/home/work/aurogr/hn_delin/canine_ds_3d_malignant_4fold.h5",
-            "batch_size": 4,
+            "batch_size": 2,
             "patch_size": 112,
-            "batch_cache": 7,
+            "batch_cache": 6,
             "x_name": "input",
             "y_name": "target",
             "train_folds": [
@@ -87,7 +88,7 @@
             112,
             112,
             112,
-            1
+            2
         ]
     },
     "model_params": {
