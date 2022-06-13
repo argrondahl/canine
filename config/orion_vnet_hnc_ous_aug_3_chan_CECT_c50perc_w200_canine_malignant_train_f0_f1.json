@@ -14,7 +14,7 @@
     "dataset_params": {
         "class_name": "H5PatchReaderModified",
         "config": {
-            "actual_input_shape": [112, 112, 112, 2],
+            "actual_input_shape": [112, 112, 112, 3],
             "filename": "/home/work/aurogr/hn_delin/hnc_ous_ds_3d_6fold.h5",
             "batch_size": 2,
             "patch_size": 112,
@@ -45,6 +45,12 @@
                     }
                 },
                 {
+                    "class_name": "ChannelRepeater",
+                    "config": {
+                        "channel": 0
+                    }
+                },
+                {
                     "class_name": "HounsfieldWindowingPreprocessor",
                     "config": {
                         "window_center": 65,
@@ -55,7 +61,7 @@
                 {
                     "class_name": "HounsfieldWindowingPreprocessor",
                     "config": {
-                        "window_center": 83,
+                        "window_center": 93,
                         "window_width": 200,
                         "channel": 1
                     }
@@ -107,7 +113,7 @@
             112,
             112,
             112,
-            2
+            3
         ]
     },
     "model_params": {
