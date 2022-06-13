@@ -49,4 +49,4 @@ echo "Finished seting up files."
 nvidia-modprobe -u -c=0
 
 # Run test on external data
-singularity exec --nv deoxys-elasticdeform.sif python -u run_external.py $1 $SCRATCH2/canine/$2 --temp_folder $SCRATCH2/hnperf/$2 --analysis_folder $SCRATCH2/analysis/$2 ${@:3}
+singularity exec --nv deoxys-elasticdeform.sif python -u run_external.py $1 /mnt/SCRATCH2/canine/$2 --temp_folder /mnt/SCRATCH2/hnperf/$2 --analysis_folder /mnt/SCRATCH2/analysis/$2 ${@:3}
