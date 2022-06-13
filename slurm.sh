@@ -53,12 +53,12 @@ nvidia-modprobe -u -c=0
 export ITER_PER_EPOCH=100
 export NUM_CPUS=4
 export RAY_ROOT=$TMPDIR/ray
-singularity exec --nv deoxys-elasticdeform.sif python experiment_orion.py $1 $SCRATCH/canine/$2 --temp_folder $SCRATCH/hnperf/$2 --analysis_folder $SCRATCH/analysis/$2 --epochs $3 ${@:4}
+singularity exec --nv deoxys-elasticdeform.sif python experiment_orion.py $1 $SCRATCH2/canine/$2 --temp_folder $SCRATCH2/hnperf/$2 --analysis_folder $SCRATCH2/analysis/$2 --epochs $3 ${@:4}
 
 # echo "Finished training. Post-processing results"
 
-# singularity exec --nv deoxys.sif python -u post_processing.py /net/fs-1/Ngoc/hnperf/$2 --temp_folder $SCRATCH/hnperf/$2 --analysis_folder $SCRATCH/analysis/$2 ${@:4}
+# singularity exec --nv deoxys.sif python -u post_processing.py /net/fs-1/Ngoc/hnperf/$2 --temp_folder $SCRATCH2/hnperf/$2 --analysis_folder $SCRATCH2/analysis/$2 ${@:4}
 
 # echo "Finished post-precessing. Running test on best model"
 
-# singularity exec --nv deoxys.sif python -u run_test.py /net/fs-1/Ngoc/hnperf/$2 --temp_folder $SCRATCH/hnperf/$2 --analysis_folder $SCRATCH/analysis/$2 ${@:4}
+# singularity exec --nv deoxys.sif python -u run_test.py /net/fs-1/Ngoc/hnperf/$2 --temp_folder $SCRATCH2/hnperf/$2 --analysis_folder $SCRATCH2/analysis/$2 ${@:4}
