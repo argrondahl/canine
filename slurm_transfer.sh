@@ -53,4 +53,4 @@ nvidia-modprobe -u -c=0
 export ITER_PER_EPOCH=100
 export NUM_CPUS=4
 export RAY_ROOT=$TMPDIR/$USER/ray
-singularity exec --nv deoxys-elasticdeform.sif python transfer_learning.py $1 /mnt/SCRATCH2/canine/$2 --temp_folder /mnt/SCRATCH2/hnperf/$2 --analysis_folder /mnt/SCRATCH2/analysis/$2 --epochs $3 ${@:4}
+singularity exec --nv deoxys-elasticdeform.sif python transfer_learning.py $1 /mnt/SCRATCH2/$USER/canine/$2 --temp_folder /mnt/SCRATCH2/$USER/hnperf/$2 --analysis_folder /mnt/SCRATCH2/$USER/analysis/$2 --epochs $3 ${@:4}
