@@ -6,20 +6,36 @@
         ],
         "preprocessors": [
             {
-                "class_name": "WindowingPreprocessor",
+                "class_name": "ChannelRepeater",
+                "config": {
+                    "channel": 0
+                }
+            },
+            {
+                "class_name": "HounsfieldWindowingPreprocessor",
+                "config": {
+                    "window_center": 65,
+                    "window_width": 200,
+                    "channel": 0
+                }
+            },
+            {
+                "class_name": "HounsfieldWindowingPreprocessor",
                 "config": {
                     "window_center": 93,
                     "window_width": 200,
-                    "channel": 0
+                    "channel": 1
                 }
             },
             {
                 "class_name": "ImageNormalizerPreprocessor",
                 "config": {
                     "vmin": [
+                        -100,
                         -100
                     ],
                     "vmax": [
+                        100,
                         100
                     ]
                 }
