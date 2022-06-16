@@ -12,7 +12,7 @@
                 }
             },
             {
-                "class_name": "HounsfieldWindowingPreprocessor",
+                "class_name": "WindowingPreprocessor",
                 "config": {
                     "window_center": 65,
                     "window_width": 200,
@@ -20,7 +20,7 @@
                 }
             },
             {
-                "class_name": "HounsfieldWindowingPreprocessor",
+                "class_name": "WindowingPreprocessor",
                 "config": {
                     "window_center": 96,
                     "window_width": 200,
