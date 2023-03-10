@@ -18,7 +18,7 @@ $HOME
    │   └── (other files)
    ├── datasets (Put your datasets in here)
    │   └── headneck
-   │       ├── full_dataset_singleclass.h5
+   │       ├── canine_ds_3d_malignant_4fold.h5
    │       └── (other datasets)
    ├── hnperf (log files will be saved in here)
    │
